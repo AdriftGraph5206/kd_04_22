@@ -24,9 +24,34 @@ window.onload = async () => {
     const posts = await getPosts();
     const users = await getUsers();
 
-
-
     const postsElement = document.querySelector(".posts");
+    const searchByName = document.getElementById("searchByName")
+    const searchbtn = document.getElementById("Searchbtn")
+    const limitInput = document.getElementById("limitposts")
+
+    console.log(limitInput.value)
+    renderPosts(posts)
+
+    function filterByName(query){
+        return posts.filter((post) => post.title.includes(query))
+    }
+
+    searchbtn.addEventListener('click', () => {
+        const filteredPosts = filterByName(searchByName.value);
+        renderPosts(filteredPosts)
+    })
+
+    async function renderPosts(posts){
+            postsElement.innerHTML = '';
+            posts.slice(0, limitInput.value).forEach(post => {
+                
+            })
+       
+
+        
+
+
+    
 
     posts.forEach(post => {
         const postElement = document.createElement('div');
@@ -42,4 +67,4 @@ window.onload = async () => {
         `;
         postsElement.append(postElement);
     });
-}
+}}

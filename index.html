@@ -22,21 +22,22 @@
         color: aqua;
     }
 
-    .title{
-        
-    }
-
 
    @media (min-width: 600px) {
     div {width: 200px;}
 }
 
-@media (min-width: 768px) {
+@media (min-width: 767px) {
    div {width: 400px;}
 }
 </style>
 <body>
-    
+    <!-- Pasidaryti searcha -->
+     <div>
+        <input type="text" id="searchByName" placeholder="Search">
+        <input type="number" id="limitposts" value="5">
+        <button id="Searchbtn">Search</button>
+     </div>
     <div class="posts"></div>
 
 <script src="script.js"></script>
