@@ -44,27 +44,16 @@ window.onload = async () => {
     async function renderPosts(posts){
             postsElement.innerHTML = '';
             posts.slice(0, limitInput.value).forEach(post => {
-                
+                const postelement = document.createElement('div');
+                postelement.classList.add('post');
+
+                const user = getUserByID(users, post.userId)
+
+                postelement.innerHTML = `
+                <h3>${post.title}</h3>
+                <p>${post.body}</p>
+                <p>${user.name}</p>
+                `;
+                postsElement.append(postelement)
             })
-       
-
-        
-
-
-    
-
-    posts.forEach(post => {
-        const postElement = document.createElement('div');
-        postElement.classList.add('post');
-
-        const user = getUserByID(users, post.userId);
-
-        postElement.innerHTML = `
-            
-            <p class="title">${post.title}</p>
-            <pclass="post">${post.body}</p>
-            <p class="user">${user.name}</p>
-        `;
-        postsElement.append(postElement);
-    });
-}}
+    }}
